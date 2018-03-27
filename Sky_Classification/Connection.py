@@ -1,11 +1,16 @@
 from json import dumps, loads
 from sys import getsizeof
 from math import floor
-from socket import *
+from socket import AF_INET, SOCK_STREAM, socket
 
-to_nested_bjson_list = lambda x: dumps([list(i) for i in x]).encode()
-to_bjson_list = lambda x: dumps(list(x)).encode()
-from_bjson = lambda x: loads(x.decode())
+to_nested_bjson_list = lambda x: \
+				dumps([list(i) for i in x]).encode()
+
+to_bjson_list = lambda x: \
+				dumps(list(x)).encode()
+
+from_bjson = lambda x: \
+				loads(x.decode())
 
 class Connection(object):
 
