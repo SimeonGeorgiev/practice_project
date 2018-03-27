@@ -17,8 +17,8 @@ from_bjson = lambda x: \
 class AsyncConnection(object):
 	"""
 	Run get_predictions in an event loop to get predictions from a server.
-	After get_predictions the object will have a .help attribute.
-	This is not an asynchronous context manager
+	After running get_predictions the object will have a .help attribute.
+	This is not an asynchronous context manager.
 	"""
 	def __init__(self, address, loop=False, mode=[AF_INET, SOCK_STREAM]):
 		self.sock = socket(*mode)
@@ -56,10 +56,13 @@ class AsyncConnection(object):
 								range(0, shape[0], max_elements))
 			# index_to contains the indexes used to send the array in chunks
 			
-			resp = await asyncio.gather(*[self.send_recv(
+			coroutines = [self.send_recv(
 							message=to_nested_bjson_list(X[index:to]),
-							nbytes=self.maxbytes) for index, to in index_to],
-						loop=self.loop) # asyncio.gather(list of coroutines) -> list[results]
+							nbytes=self.maxbytes) for index, to in index_to]
+			# a list of self.send_recv() coroutines.
+
+			resp = await asyncio.gather(*coroutines, loop=self.loop) 
+			# asyncio.gather(list of coroutines) -> list[results]
 
 			prediction = map(from_bjson, resp); del resp, X
 
