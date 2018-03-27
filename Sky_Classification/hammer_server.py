@@ -40,8 +40,8 @@ if __name__ == "__main__":
 	2. The below benchmarsk take 50-80 seconds per iteration, with significant variation.
 	"""
 # Threaded connections.
-	#for _ in range(CHUNKS):
-	#	main(THREADS_P)
+	for _ in range(CHUNKS):
+		main(THREADS_P)
 
 #Asynchronous/event-driven connections.
 	loop = asyncio.get_event_loop()
