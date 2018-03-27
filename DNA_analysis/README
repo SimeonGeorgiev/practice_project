@@ -1,0 +1,11 @@
+Modules Needed: 
+Module name; Version
+Bio: 1.69
+Bio.Blast: 1.69
+re: Python built-in module.
+Python version: 3.6.3
+
+Answers:
+The large open reading frame starts on the first reading frame, on position 30747 of mine.seq
+The sequence is most likely from Candida glabrata, as evidenced by BLAST searches.
+
