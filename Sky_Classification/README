@@ -1,2 +1,10 @@
 data taken from:
 https://www.kaggle.com/lucidlenn/sloan-digital-sky-survey
+Files:
+pred_server.py: Creates a server that handles predictions remotly, the default address is localhost:5555. 
+  Run this script to start the server before running any other script.
+dec_tree.py: Trains the tree with an sklearn pipeline, using a DecisionTree as a classifier.
+Connection.py: A context manager class, built on top of a socket.socket to handle remote predictions for the client. 
+AsyncConnection.py: Handles connection to a server, can handle multiple connections with an event loop.
+comp_conf_using_server.py: Computes a covariance matrix using predictions from the server.
+hammer_server.py: Tests the server by establishing many connections.
