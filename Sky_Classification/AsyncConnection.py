@@ -1,7 +1,7 @@
 from json import dumps, loads
 from sys import getsizeof
 from math import floor
-from socket import *
+from socket import AF_INET, SOCK_STREAM, socket
 import asyncio
 from numpy import ndarray
 
