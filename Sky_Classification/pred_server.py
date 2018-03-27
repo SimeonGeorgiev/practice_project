@@ -1,4 +1,4 @@
-from socket import *
+from socket import AF_INET, SOCK_STREAM, socket, SOL_SOCKET, SO_REUSEADDR
 import async2
 from sklearn.externals import joblib
 from sklearn.tree import export_graphviz
